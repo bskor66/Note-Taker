@@ -18,10 +18,59 @@
 			<div class="row fill-viewport">
 				<div
 					class="col-md-4 col-lg-3 bg-light border-end fill-viewport"
-					id="sidebar"></div>
+					id="sidebar">
+					<button
+						type="button"
+						class="btn btn-success"
+						data-bs-toggle="modal"
+						data-bs-target="#newNoteModal">
+						Add New Note
+					</button>
+				</div>
 				<div class="col-md-8 col-lg-9 p-4 fill-viewport" id="noteContent">
 					<h3>Note Title</h3>
 					<p>Note content...</p>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="modal fade"
+			id="newNoteModal"
+			tabindex="-1"
+			aria-labelledby="newNoteModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="newNoteModalLabel">New Note</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form id="newNoteForm">
+							<div class="mb-3">
+								<label for="noteTitle" class="form-label">Title</label>
+								<input
+									type="text"
+									class="form-control"
+									id="noteTitle"
+									required />
+							</div>
+							<div class="mb-3">
+								<label for="noteContent" class="form-label">Content</label>
+								<textarea
+									class="form-control"
+									id="noteContent"
+									rows="3"
+									required></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary">Add Note</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

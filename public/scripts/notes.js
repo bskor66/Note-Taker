@@ -18,4 +18,37 @@ document.addEventListener("DOMContentLoaded", function () {
 	function displayNote(note) {
 		noteContent.innerHTML = `<h3>${note.title}</h3><p>${note.content}</p>`;
 	}
+
+	document
+		.getElementById("newNoteForm")
+		.addEventListener("submit", function (event) {
+			event.preventDefault();
+
+			const title = document.getElementById("noteTitle").value;
+			const content = document.getElementById("noteContent").value;
+
+			const noteData = {
+				title: title,
+				content: content,
+			};
+
+			fetch("/api/notes", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(noteData),
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					console.log("Success:", data);
+					bootstrap.Modal.getInstance(
+						document.getElementById("newNoteModal")
+					).hide();
+					document.getElementById("newNoteForm").reset();
+				})
+				.catch((error) => {
+					console.error("Error:", error);
+				});
+		});
 });
