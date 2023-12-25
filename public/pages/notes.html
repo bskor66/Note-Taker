@@ -14,26 +14,28 @@
 		</style>
 	</head>
 	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Note Taker</a>
+				<button
+					type="button"
+					class="btn btn-success"
+					data-bs-toggle="modal"
+					data-bs-target="#newNoteModal">
+					Add New Note
+				</button>
+			</div>
+		</nav>
 		<div class="container-fluid fill-viewport">
 			<div class="row fill-viewport">
 				<div
 					class="col-md-4 col-lg-3 bg-light border-end fill-viewport"
-					id="sidebar">
-					<button
-						type="button"
-						class="btn btn-success"
-						data-bs-toggle="modal"
-						data-bs-target="#newNoteModal">
-						Add New Note
-					</button>
-				</div>
+					id="sidebar"></div>
 				<div class="col-md-8 col-lg-9 p-4 fill-viewport" id="noteContent">
-					<h3>Note Title</h3>
-					<p>Note content...</p>
+					<h3>Select a Note to Get Started</h3>
 				</div>
 			</div>
 		</div>
-
 		<div
 			class="modal fade"
 			id="newNoteModal"
@@ -53,18 +55,18 @@
 					<div class="modal-body">
 						<form id="newNoteForm">
 							<div class="mb-3">
-								<label for="noteTitle" class="form-label">Title</label>
+								<label for="newNoteTitle" class="form-label">Title</label>
 								<input
 									type="text"
 									class="form-control"
-									id="noteTitle"
+									id="newNoteTitle"
 									required />
 							</div>
 							<div class="mb-3">
-								<label for="noteContent" class="form-label">Content</label>
+								<label for="newNoteContent" class="form-label">Content</label>
 								<textarea
 									class="form-control"
-									id="noteContent"
+									id="newNoteContent"
 									rows="3"
 									required></textarea>
 							</div>
