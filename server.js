@@ -1,6 +1,7 @@
-const exp = require("constants");
 const express = require("express");
 const path = require("path");
+const {v4: uuidv4} = require("uuid");
+const readAndAppend = require("./helpers/fsUtils");
 
 const PORT = process.env.port || 3001;
 const app = express();
@@ -43,13 +44,15 @@ app.get("/api/notes", (req, res) => {
 	}
 });
 
-app.post("/api/notes", (req, res) => {
+app.post("/api/notes", async (req, res) => {
 	try {
-		console.log(req.body);
+		const {title, content} = req.body;
 		const note = {
-			title: req.body.title,
-			content: req.body.content,
+			id: uuidv4(),
+			title,
+			content,
 		};
+		await readAndAppend(note, path.join(__dirname, "db/db.json"));
 		res.send(note);
 	} catch (err) {
 		res.json(err);
